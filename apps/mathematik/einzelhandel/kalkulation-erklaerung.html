@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handelskalkulation | Erklärung</title>
+  <link rel="stylesheet" href="../../../assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="app-shell">
+  <header class="hero">
+    <h1>Handelskalkulation</h1>
+    <p class="subtitle">Einkaufs- und Verkaufspreise schrittweise kalkulieren</p>
+    <div class="badge-row" style="justify-content:center">
+      <span class="badge">Fach: Mathematik</span>
+      <span class="badge">Fächerübergreifend: nein</span>
+      <span class="badge">Version 1.0.5</span>
+    </div>
+  </header>
+  <main id="main" class="page-wrap">
+    <a class="back-link" href="../../../index.html">← Dashboard</a>
+    <span class="tag red">Kalkulation</span>
+    
+    <section class="section-card"><h2>1. Basisschema</h2><div class="schema-container"><div class="schema-line"><span>Listeneinkaufspreis (LEP)</span><span>100 %</span></div><div class="schema-line"><span><span class="operator">-</span> Lieferrabatt</span></div><div class="schema-line important-line"><span><span class="operator">=</span> Zieleinkaufspreis (ZEP)</span></div><div class="schema-line"><span><span class="operator">-</span> Liefererskonto</span></div><div class="schema-line important-line"><span><span class="operator">=</span> Bareinkaufspreis (BEP)</span></div><div class="schema-line"><span><span class="operator">+</span> Bezugskosten</span></div><div class="schema-line important-line"><span><span class="operator">=</span> Bezugspreis / Einstandspreis</span></div><div class="schema-line"><span><span class="operator">+</span> Handlungskosten</span></div><div class="schema-line important-line"><span><span class="operator">=</span> Selbstkostenpreis</span></div><div class="schema-line"><span><span class="operator">+</span> Gewinn</span></div><div class="schema-line important-line"><span><span class="operator">=</span> Barverkaufspreis</span></div><div class="schema-line"><span><span class="operator">+</span> Kundenskonto</span></div><div class="schema-line important-line"><span><span class="operator">=</span> Zielverkaufspreis</span></div><div class="schema-line"><span><span class="operator">+</span> Kundenrabatt</span></div><div class="schema-line important-line"><span><span class="operator">=</span> Listenverkaufspreis netto</span></div></div></section>
+    <section class="section-card"><h2>2. Einkaufskalkulation</h2><p>Vom Listeneinkaufspreis werden Nachlässe abgezogen. Bezugskosten werden addiert.</p><ul class="module-list"><li>Lieferrabatt senkt den Einkaufspreis.</li><li>Liefererskonto senkt den Zahlbetrag.</li><li>Bezugskosten erhöhen den Bezugspreis.</li></ul><div class="formula-box">LEP - Rabatt = ZEP · ZEP - Skonto = BEP · BEP + Bezugskosten = Bezugspreis</div></section>
+    <section class="section-card"><h2>3. Zuschläge</h2><div class="explain-grid"><div class="explain-card"><strong>Handlungskostenzuschlag</strong><div class="formula-box">HKZ % = Handlungskosten · 100 / Bezugspreis</div></div><div class="explain-card"><strong>Gewinnzuschlag</strong><div class="formula-box">Gewinn % = Gewinn · 100 / Selbstkostenpreis</div></div></div></section>
+    <section class="section-card"><h2>4. Verkaufskalkulation im Hundert</h2><p>Kundenskonto und Kundenrabatt werden häufig „im Hundert“ berechnet, weil der Nachlass vom später höheren Verkaufspreis abgezogen wird.</p><div class="formula-box">Zielverkaufspreis = Barverkaufspreis · 100 / (100 - Skonto %)</div><div class="formula-box">Listenverkaufspreis = Zielverkaufspreis · 100 / (100 - Rabatt %)</div></section>
+    <section class="section-card"><h2>5. Kalkulationsmethoden</h2><div class="explain-grid"><div class="explain-card"><strong>Vorwärtskalkulation</strong>Vom Einkaufspreis zum Verkaufspreis.</div><div class="explain-card"><strong>Rückwärtskalkulation</strong>Vom Marktpreis zurück zum maximalen Einkaufspreis.</div><div class="explain-card"><strong>Differenzkalkulation</strong>Einkaufs- und Verkaufspreis sind gegeben. Gesucht ist der Gewinn.</div></div></section>
+    <section class="section-card">
+      <h2>Weiterarbeiten</h2>
+      <p>Bearbeite nach der Erklärung die Übung. Dort bekommst du Feedback, Hilfe und Musterlösungen erst nach der Prüfung deiner Eingabe.</p>
+      <div class="explain-actions">
+        <a class="btn secondary" href="../../../index.html">Zur Startseite</a>
+        <a class="btn primary" href="kalkulation-uebung.html">Zur Übung</a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">Offline nutzbar · keine externen Bibliotheken · Mathematik · BFS / Einzelhandel</footer>
+</div>
+</body>
+</html>
