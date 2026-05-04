@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaufmännisches Rechnen | Lernquest</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<div class="app-shell">
+  <header class="quest-hero">
+    <h1>Kaufmännisches Rechnen</h1>
+    <p class="subtitle">Mathematik · BFS · Einzelhandel · Offline-Lernquest</p>
+  </header>
+  <main id="main" class="quest-content">
+    <p class="intro">Wähle ein Lernmodul. Alle Aufgaben sind als Textaufgaben formuliert. Die App speichert XP, Badges und Fortschritt nur lokal auf diesem Gerät.</p>
+    <section class="dashboard-grid" aria-label="Lernstand und Mission">
+      <div class="quest-panel card">
+        <h2>Dein Lernstand</h2>
+        <p class="muted" id="levelLine">Level wird geladen ...</p>
+        <div class="xp-bar"><div class="xp-fill" id="dashXpFill" style="width:0%"></div></div>
+        <div class="stat-row">
+          <div class="stat-pill"><strong id="dashXp">0</strong>XP</div>
+          <div class="stat-pill"><strong id="dashCorrect">0</strong>richtig</div>
+          <div class="stat-pill"><strong id="dashBadges">0</strong>Badges</div>
+        </div>
+        <div class="quick-actions">
+          <a class="btn" id="continueBtn" href="apps/mathematik/gemeinsame-grundlagen/dreisatz.html">Weiterlernen</a>
+          <a class="btn secondary" href="fortschritt.html">Fortschritt</a>
+          <a class="btn secondary" href="badges.html">Badges</a>
+          <button class="btn danger" id="resetAll" type="button">Lernstand löschen</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="mission-card">
+          <div class="mission-icon">🎯</div>
+          <div>
+            <div class="mission-title" id="missionTitle">Tagesmission</div>
+            <p id="missionText" style="margin:.2rem 0 .5rem">Löse heute 5 Textaufgaben richtig.</p>
+            <div class="mission-bar"><div class="mission-fill" id="missionFill" style="width:0%"></div></div>
+            <div class="mission-meta" id="missionMeta">0 / 5 geschafft</div>
+          </div>
+        </div>
+        <div class="top-actions" aria-label="Filter">
+          <button class="btn secondary" id="showAll">Alle Themen</button>
+          <button class="btn secondary" id="showBfs">BFS</button>
+          <button class="btn secondary" id="showEh">Einzelhandel</button>
+        </div>
+      </div>
+    </section>
+    <section class="grid" id="moduleGrid" aria-label="Themenmodule"></section>
+    <section class="section-card">
+      <h2>Tipp zum Lernen</h2>
+      <p>Lies zuerst die Erklärung. Bearbeite danach die Übung. Nutze die Hilfe erst, wenn du nicht weiterkommst. Die Musterlösung wird erst nach deiner Eingabe und Prüfung freigeschaltet.</p>
+    </section>
+    <section class="section-card" id="teacherGate">
+      <h2>Lehrkraft-Hinweise</h2>
+      <p>Dieser Bereich ist nur für Lehrkräfte vorgesehen. Gib den Freigabecode ein.</p>
+      <div class="input-row"><input id="teacherCodeInput" type="password" inputmode="numeric" autocomplete="off" placeholder="Code eingeben" aria-label="Freigabecode"><button class="btn secondary" id="unlockTeacherInfo" type="button">Freigeben</button></div>
+      <div id="teacherCodeFeedback" class="feedback" role="status"></div>
+    </section>
+    <section class="section-card teacher-panel" id="teacherInfoPanel">
+      <h2>Lehrkraft-Hinweise</h2>
+      <p><strong>Trennungsprüfung:</strong> Fach Mathematik, Bildungsgänge BFS und Einzelhandel, keine Politik, kein Wirtschaft-Fach, keine fächerübergreifenden Inhalte.</p>
+      <p><strong>Datenschutz:</strong> Es werden keine Namen, Klassenlisten oder personenbezogenen Daten gespeichert. Lernstände bleiben nur lokal im Browser.</p>
+      <p><strong>Version:</strong> 1.1.0 · Änderung: Gamified Learning Dashboard, XP-System, Badges, Tagesmission und Fortschrittsseiten.</p>
+      <button class="btn secondary" id="lockTeacherInfo" type="button">Lehrkraft-Hinweise wieder sperren</button>
+    </section>
+  </main>
+  <footer class="footer">Berufskolleg · Mathematik · BFS / Einzelhandel · offline · keine personenbezogenen Daten</footer>
+</div>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/gamification.js"></script>
+<script>
+const modules = [{"id": "dreisatz", "no": "01", "tag": "Grundlagen", "tagClass": "", "title": "Dreisatz", "pathway": "BFS/EH", "group": "both", "explain": "apps/mathematik/gemeinsame-grundlagen/dreisatz-erklaerung.html", "exercise": "apps/mathematik/gemeinsame-grundlagen/dreisatz.html", "desc": "Verhältnisse sicher berechnen und Textaufgaben strukturieren.", "topics": ["Gerader Dreisatz", "Ungerader Dreisatz", "Textaufgaben"]}, {"id": "prozentrechnung", "no": "02", "tag": "Prozent", "tagClass": "gold", "title": "Prozentrechnung", "pathway": "BFS/EH", "group": "both", "explain": "apps/mathematik/gemeinsame-grundlagen/prozentrechnung-erklaerung.html", "exercise": "apps/mathematik/gemeinsame-grundlagen/prozentrechnung.html", "desc": "Grundwert, Prozentwert und Prozentsatz passend auswählen.", "topics": ["Grundwert", "Prozentwert", "Erhöhung & Verminderung"]}, {"id": "durchschnitt", "no": "03", "tag": "Mittelwerte", "tagClass": "violet", "title": "Durchschnitt", "pathway": "BFS/EH", "group": "both", "explain": "apps/mathematik/gemeinsame-grundlagen/durchschnitt-erklaerung.html", "exercise": "apps/mathematik/gemeinsame-grundlagen/durchschnitt.html", "desc": "Einfache und gewichtete Durchschnitte berechnen.", "topics": ["Arithmetisches Mittel", "Gewogener Durchschnitt", "Plausibilität"]}, {"id": "zinsrechnung", "no": "04", "tag": "Zinsen", "tagClass": "", "title": "Zinsrechnung", "pathway": "BFS/EH", "group": "both", "explain": "apps/mathematik/gemeinsame-grundlagen/zinsrechnung-erklaerung.html", "exercise": "apps/mathematik/gemeinsame-grundlagen/zinsrechnung.html", "desc": "Zinsen für Jahre, Monate und Tage berechnen.", "topics": ["Jahreszinsen", "Monatszinsen", "Tageszinsen"]}, {"id": "kasse", "no": "05", "tag": "Kasse", "tagClass": "gold", "title": "Kassenabrechnung", "pathway": "Einzelhandel", "group": "eh", "explain": "apps/mathematik/einzelhandel/kasse-erklaerung.html", "exercise": "apps/mathematik/einzelhandel/kasse.html", "desc": "Kassenbestände, Einnahmen und Differenzen rechnerisch prüfen.", "topics": ["Tageseinnahmen", "Soll- und Ist-Bestand", "Differenzen"]}, {"id": "kalkulation", "no": "06", "tag": "Kalkulation", "tagClass": "red", "title": "Handelskalkulation", "pathway": "Einzelhandel", "group": "eh", "explain": "apps/mathematik/einzelhandel/kalkulation-erklaerung.html", "exercise": "apps/mathematik/einzelhandel/kalkulation-uebung.html", "desc": "Einkaufs- und Verkaufspreise schrittweise kalkulieren.", "topics": ["Bezugspreis", "Vorwärts & Rückwärts", "Zuschlag & Abschlag"]}];
+function render(filter="all"){
+  const grid=document.getElementById("moduleGrid"); grid.innerHTML="";
+  modules.filter(m=>filter==="all"||m.group==="both"||m.group===filter).forEach(m=>{
+    const p=readStore("progress_"+m.id,{points:0,correct:0,attempts:0}); const pct=p.attempts?Math.min(100,Math.round((p.correct||0)/(p.attempts||1)*100)):0;
+    const items=m.topics.map(t=>`<li>${t}</li>`).join(""); const el=document.createElement("article"); el.className="module-card card";
+    el.innerHTML=`<div class="module-head"><div class="tag-row"><span class="tag ${m.tagClass}">${m.tag}</span><span class="module-number">${m.no}</span></div><h2>${m.title}</h2><p>${m.desc}</p><div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div><p class="small">${m.pathway} · ${p.points||0} XP · ${pct}% lokal</p></div><div class="module-body"><ul class="module-list">${items}</ul><div class="button-row"><a class="btn secondary" href="${m.explain}">Erklärung</a><a class="btn" href="${m.exercise}">Übung</a></div></div>`;
+    grid.appendChild(el);
+  });
+}
+function refreshDashboard(){
+  const t=totalProgress(); document.getElementById('dashXp').textContent=t.points; document.getElementById('dashCorrect').textContent=t.correct; document.getElementById('dashBadges').textContent=badgeList(t).length; document.getElementById('levelLine').textContent=t.level.label + ` · ${t.level.pct} % bis zum nächsten Level`; document.getElementById('dashXpFill').style.width=t.level.pct+'%';
+  const m=dailyMission(); document.getElementById('missionFill').style.width=Math.round(m.current/m.target*100)+'%'; document.getElementById('missionMeta').textContent=`${m.current} / ${m.target} geschafft`; if(m.done) document.getElementById('missionText').textContent='Tagesziel geschafft. Sehr gut!';
+  let last='apps/mathematik/gemeinsame-grundlagen/dreisatz.html'; let best=-1; modules.forEach(m=>{const p=readStore('progress_'+m.id,{}); if((p.attempts||0)>best){best=p.attempts||0; last=m.exercise;}}); document.getElementById('continueBtn').href=last;
+}
+document.getElementById("showAll").onclick=()=>render("all"); document.getElementById("showBfs").onclick=()=>render("bfs"); document.getElementById("showEh").onclick=()=>render("eh");
+document.getElementById("resetAll").onclick=()=>{if(confirm("Alle lokalen Lernstände auf diesem Gerät löschen?")){clearAllLearningData(); render("all"); refreshDashboard();}};
+const TEACHER_CODE="150411"; function unlockTeacherInfo(){const input=document.getElementById('teacherCodeInput'); if(input.value.trim()===TEACHER_CODE){document.getElementById('teacherInfoPanel').classList.add('visible');document.getElementById('teacherGate').classList.add('hidden');input.value='';}else{const fb=document.getElementById('teacherCodeFeedback');fb.className='feedback bad';fb.style.display='block';fb.textContent='Der Code ist nicht richtig. Bitte erneut eingeben.';}}
+document.getElementById('unlockTeacherInfo').onclick=unlockTeacherInfo; document.getElementById('teacherCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')unlockTeacherInfo();}); document.getElementById('lockTeacherInfo').onclick=()=>{document.getElementById('teacherInfoPanel').classList.remove('visible');document.getElementById('teacherGate').classList.remove('hidden');};
+render('all'); refreshDashboard();
+</script>
+</body>
+</html>
